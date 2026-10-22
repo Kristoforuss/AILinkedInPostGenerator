@@ -25,7 +25,7 @@ if st.button("Generate Post"):
   Fromat it nicely for LinkedIn.
   """
 
- from openai import OpenAI
+from openai import OpenAI
 
 client = OpenAI(
     base_url="https://api.orcarouter.ai/v1",
