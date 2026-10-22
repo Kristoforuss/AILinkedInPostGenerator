@@ -12,7 +12,6 @@ topic = st.text_input("Enter")
 
 if st.button("Generate Post"):
     
-    # Pastikan user sudah mengisi topik
     if not topic:
         st.warning("Mohon masukkan topik terlebih dahulu.")
     else:
@@ -28,14 +27,12 @@ if st.button("Generate Post"):
         Keep the tone professional but engaging.
         Format it nicely for LinkedIn.
         """
-
-        # Inisialisasi client
+        
         client = OpenAI(
             base_url="https://tokenharbor.ai/v1",
-            api_key="TOKENHARBOR_API_KEY", # Pastikan untuk mengganti ini dengan API Key asli Anda
+            api_key=st.secrets["TOKENHARBOR_API_KEY"],
         )
-
-        # 3. Menambahkan indikator loading agar UI lebih interaktif (Opsional)
+      
         with st.spinner("Generating your LinkedIn post..."):
             
             response = client.chat.completions.create(
@@ -43,6 +40,5 @@ if st.button("Generate Post"):
                 messages=[{"role": "user", "content": prompt_template}],
             )
             
-            # 4. Tampilkan hasil langsung ke UI Streamlit
             hasil_post = response.choices[0].message.content
             st.markdown(hasil_post)
