@@ -33,7 +33,7 @@ client = OpenAI(
 )
 
 response = client.chat.completions.create(
-    model="orcarouter/auto",
+    model="orca/orcaverify-text1.0-free",
     messages=[{"role": "user", "content": prompt_template}],
 )
 
