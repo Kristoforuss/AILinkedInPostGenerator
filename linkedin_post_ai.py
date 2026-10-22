@@ -25,15 +25,15 @@ if st.button("Generate Post"):
   Fromat it nicely for LinkedIn.
   """
 
-client = OpenAI(
+  client = OpenAI(
     base_url="https://api.orcarouter.ai/v1",
     api_key="ORCAROUTER_API_KEY",
 )
 
-response = client.chat.completions.create(
+  response = client.chat.completions.create(
     model="orca/orcaverify-text1.0-free",
     messages=[{"role": "user", "content": prompt_template}],
 )
 
-print(response.choices[0].message.content)
+  print(response.choices[0].message.content)
 #
