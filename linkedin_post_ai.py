@@ -2,7 +2,7 @@ import streamlit as st
 from openai import OpenAI
 import os
 
-os.environ["ORCAROUTER_API_KEY"] = st.secrets["ORCAROUTER_API_KEY"]
+os.environ["TOKENHARBOR_API_KEY"] = st.secrets["TOKENHARBOR_API_KEY"]
 
 st.title("AI LinkedIn Post Generator")
 
@@ -31,15 +31,15 @@ if st.button("Generate Post"):
 
         # Inisialisasi client
         client = OpenAI(
-            base_url="https://api.orcarouter.ai/v1",
-            api_key="ORCAROUTER_API_KEY", # Pastikan untuk mengganti ini dengan API Key asli Anda
+            base_url="https://tokenharbor.ai/v1",
+            api_key="TOKENHARBOR_API_KEY", # Pastikan untuk mengganti ini dengan API Key asli Anda
         )
 
         # 3. Menambahkan indikator loading agar UI lebih interaktif (Opsional)
         with st.spinner("Generating your LinkedIn post..."):
             
             response = client.chat.completions.create(
-                model="orca/orcaverify-text1.0-free",
+                model="deepseek-v4.1-flash:free",
                 messages=[{"role": "user", "content": prompt_template}],
             )
             
