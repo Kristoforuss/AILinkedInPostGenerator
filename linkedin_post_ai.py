@@ -2,7 +2,7 @@ import streamlit as st
 from openai import OpenAI
 import os
 
-os.environ["HF_TOKEN"] = st.secrets["HF_TOKEN"]
+os.environ["ORCAROUTER_API_KEY"] = st.secrets["ORCAROUTER_API_KEY"]
 
 st.title("AI LinkedIn Post Generator")
 
@@ -26,12 +26,11 @@ if st.button("Generate Post"):
   """
 
   client = OpenAI(
-    base_url="https://router.huggingface.co/v1",
-    api_key=os.environ["HF_TOKEN"],
+    base_url="https://api.orcarouter.ai/v1",
+    api_key=os.environ["ORCAROUTER_API_KEY"],
 )
   response = client.chat.completions.create(
-
-      model = "openai/gpt-oss-120b",
+      model="orca/orcaverify-text1.0-free",
       messages = [
         {
           "role": "user","content": prompt_template
